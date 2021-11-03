@@ -3,5 +3,12 @@ replication:
   readReplicas: 3
 primary:
   tolerations:
-    - key: db
-    operator: Exists
+    - key: database
+      operator: Exists
+persistence:
+  storageClass: "openebs-lvmpv"
+
+readReplicas:
+  tolerations:
+    - key: database
+      operator: Exists

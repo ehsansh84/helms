@@ -1,4 +1,6 @@
 # Run Postgres using 3 replicas on specific nodes
+
+Original helm repository: https://github.com/bitnami/charts/tree/master/bitnami/postgresql
 ### Enabling replication:
 ```yaml
 replication:

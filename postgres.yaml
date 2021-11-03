@@ -1,0 +1,7 @@
+replication:
+  enabled: true
+  readReplicas: 3
+primary:
+  tolerations:
+    - key: db
+    operator: Exists

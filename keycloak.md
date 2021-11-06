@@ -1,9 +1,10 @@
 # Run Keycloak using 3 replicas on specific nodes
 
-Original helm repository: https://github.com/codecentric/helm-charts/tree/master/charts/keycloak
+Original helm repository: https://github.com/bitnami/charts/tree/master/bitnami/keycloak
 
 ### Finally run:
 ```
-$ helm install keycloak codecentric/keycloak
-$ helm install keycloak codecentric/keycloak
+$ helm repo add bitnami https://charts.bitnami.com/bitnami
+$ helm install keycloak bitnami/keycloak
 ```
+

@@ -1,0 +1,8 @@
+postgresql:
+  enabled: false
+externalDatabase:
+  host: "postgres-postgresql.postgres"
+  port: 5432
+  user: postgres
+  password: "sCneXId5Wh"
+  database: keycloak

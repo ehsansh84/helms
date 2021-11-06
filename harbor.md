@@ -20,8 +20,8 @@ external:
 
 ### Finally run:
 ```
-$ helm repo add harbor https://helm.goharbor.io
-$ helm install harbor harbor/harbor --values=harbor.yaml
+helm repo add harbor https://helm.goharbor.io
+helm install harbor harbor/harbor --values=harbor.yaml
 ```
 
 To run harbor you must create 3 databases:

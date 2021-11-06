@@ -1,23 +1,24 @@
 database:
   type: external
-external:
-   host: "postgres-postgresql"
-   port: "5432"
-   username: "postgres"
-   password: "lOZsccljrx"
-   coreDatabase: "registry"
-   notaryServerDatabase: "notary_server"
-   notarySignerDatabase: "notary_signer"
+  external:
+#     host: "postgres-postgresql"
+     host: "postgres-postgresql.postgres"
+     port: "5432"
+     username: "postgres"
+     password: "sCneXId5Wh"
+     coreDatabase: "registry"
+     notaryServerDatabase: "notary_server"
+     notarySignerDatabase: "notary_signer"
 
 persistence:
- persistentVolumeClaim:
-   registry:
+  persistentVolumeClaim:
+    registry:
      storageClass: "rook-ceph-block-2"
-   chartmuseum:
+    chartmuseum:
      storageClass: "rook-ceph-block-2"
-   jobservice:
+    jobservice:
      storageClass: "rook-ceph-block-2"
-   redis:
+    redis:
      storageClass: "rook-ceph-block-2"
-   trivy:
+    trivy:
      storageClass: "rook-ceph-block-2"

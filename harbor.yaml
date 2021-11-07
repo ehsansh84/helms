@@ -1,7 +1,16 @@
+#expose:
+#  ingress:
+#    hosts:
+#      core: core.harbor.domain
+#      notary: notary.harbor.domain
+#externalURL: https://core.harbor.domain
+
+
+#logLevel: debug
+#harborAdminPassword: Harbor@123
 database:
   type: external
   external:
-#     host: "postgres-postgresql"
      host: "postgres-postgresql.postgres"
      port: "5432"
      username: "postgres"

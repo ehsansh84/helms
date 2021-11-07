@@ -1,0 +1,13 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: keycloak
+  namespace: keycloak
+spec:
+  routes:
+  - match: Host(`kc.greenrnd.com`)
+    kind: Rule
+    services:
+      - name: keycloak
+        namespace: keycloak
+        port: 80

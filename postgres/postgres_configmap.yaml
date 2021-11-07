@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postrges-initdb-config
+  namespace: postgres
+data:
+  initdb.sql: |
+    CREATE DATABASE registry;
+    CREATE DATABASE notary_server;
+    CREATE DATABASE notary_signer;

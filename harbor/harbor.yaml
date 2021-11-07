@@ -14,7 +14,7 @@ database:
      host: "postgres-postgresql.postgres"
      port: "5432"
      username: "postgres"
-     password: "sCneXId5Wh"
+     password: "gNu4ngXrrn"
      coreDatabase: "registry"
      notaryServerDatabase: "notary_server"
      notarySignerDatabase: "notary_signer"

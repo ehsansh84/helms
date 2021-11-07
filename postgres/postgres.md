@@ -23,5 +23,5 @@ $ kubectl taint no worker6-db db:NoSchedule
 ### Finally run:
 ```
 helm repo add bitnami https://charts.bitnami.com/bitnami
-helm install my-release bitnami/postgresql -f postgres.yaml
+helm install postgres bitnami/postgresql -f postgres.yaml
 ```

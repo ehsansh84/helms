@@ -5,5 +5,6 @@ Original helm repository: https://github.com/argoproj/argo-helm/tree/master/char
 ### Run:
 ```
 kubectl create namespace argocd
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+helm repo add argo https://argoproj.github.io/argo-helm
+helm install -n argocd argocd argo/argo-cd
 ```

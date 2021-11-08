@@ -20,8 +20,9 @@ external:
 
 ### Finally run:
 ```
+kubectl create namespace harbor
 helm repo add harbor https://helm.goharbor.io
-helm install harbor harbor/harbor --values=harbor.yaml
+helm install -n harbor harbor harbor/harbor --values=harbor.yaml
 ```
 
 To run harbor you must create 3 databases:

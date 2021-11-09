@@ -6,7 +6,7 @@ metadata:
 spec:
   routes:
     - kind: Rule
-      match: Host(`argocd.greenrnd.com`)
+      match: Host(`argo.greenrnd.com`)
       services:
         - kind: Service
           name: argocd-server

@@ -6,5 +6,8 @@ externalDatabase:
   host: "postgres-postgresql.postgres"
   port: 5432
   user: postgres
-  password: "sCneXId5Wh"
+  password: "ilQ7lUqd2B"
   database: keycloak
+#auth:
+#  adminUser: user
+#  adminPassword: "kc@123"

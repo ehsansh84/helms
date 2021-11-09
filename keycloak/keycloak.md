@@ -20,7 +20,17 @@ CREATE DATABASE keycloak;
 
 ### Finally run:
 ```
+kubectl create namespace keycloak
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
-$ helm install keycloak bitnami/keycloak
+$ helm install -n keycloak keycloak bitnami/keycloak -f keycloak.yaml
+```
+### Add a user from inside the pod:
+```
+kubectl exec -n keycloak -ti keycloak-0 -- bash
+```
+Then goto `/opt/bitnami/keycloak/bin`
+And run:
+```
+./add-user-keycloak.sh --user YourUser --password YourNewPass --realm YourRealm
 ```
 

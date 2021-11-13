@@ -1,4 +1,0 @@
-#meta.helm.sh/release-namespace"
-server:
-  service:
-    type: NodePort

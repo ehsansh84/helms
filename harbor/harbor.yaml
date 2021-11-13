@@ -2,7 +2,7 @@ externalURL: http://harbor.greenrnd.com
 expose:
   ingress:
     hosts:
-      core: harbor.greenrnd.com
+      core: h.greenrnd.com
       notary: notary.greenrnd.com
 harborAdminPassword: Harbor@123
 database:

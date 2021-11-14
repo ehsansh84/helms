@@ -12,7 +12,3 @@ spec:
           name: argocd-demo-server
           namespace: argocd
           port: 80
-        - kind: Service
-          name: argocd-demo-server
-          namespace: argocd
-          port: 443

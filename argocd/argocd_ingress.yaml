@@ -6,9 +6,20 @@ metadata:
 spec:
   routes:
     - kind: Rule
-      match: Host(`argo.devserver.ir`)
+      match: Host(`argocd.devserver.ir`)
       services:
         - kind: Service
-          name: argocd-demo-server
+          name: argocd-server
           namespace: argocd
           port: 80
+  tls:                              # [11]
+    secretName: devserver-ir         # [12]
+#    options:                        # [13]
+#      name: opt
+#      namespace: argocd            # [15]
+    domains:                        # [17]
+    - main: devserver.ir             # [18]
+      sans:                         # [19]
+      - argocd.devserver.ir
+
+

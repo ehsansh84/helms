@@ -1,0 +1,21 @@
+service:
+  type: NodePort
+ports:
+  web:
+    nodePort: 32080
+  websecure:
+    nodePort: 32443
+logs:
+  general:
+    level: INFO
+  access:
+    # To enable access logs
+    enabled: true
+env:
+  - name: TZ
+    value: Asia/Tehran
+image:
+  pullPolicy: Always
+ingressRoute:
+  dashboard:
+    enabled: false # We will use a custom inrgessRoute with basic auth instead of the default one

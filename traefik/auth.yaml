@@ -1,0 +1,19 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: auth
+  namespace: traefik
+spec:
+  basicAuth:
+    secret: traefik-auth
+#    namespace: traefik
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: traefik-auth
+  namespace: traefik
+data:
+  users: YWRtaW46JGFwcjEkZ3hwNXlyeVckSkZpTno4SllsWnowQTVQQ2dlS2cuMAo= # username: admin password admin@123

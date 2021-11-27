@@ -11,5 +11,5 @@ helm install -n argocd argocd argo/argo-cd
 
 ### If you want to use your own certificate produce `secret` like this:
 ```
-kubectl create secret tls my-secret-name --cert=path/to/cert/file --key=path/to/key/file
+kubectl create secret tls my-secret-name -n argocd --cert=path/to/cert/file --key=path/to/key/file
 ```

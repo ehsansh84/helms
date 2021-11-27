@@ -4,6 +4,13 @@ expose:
     hosts:
       core: h.greenrnd.com
       notary: notary.greenrnd.com
+  tls:
+    enabled: true
+    certSource: secret
+    secret:
+      secretName: h.greenrnd.com
+
+
 harborAdminPassword: Harbor@123
 database:
   type: external

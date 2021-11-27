@@ -1,0 +1,94 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: argocd
+  namespace: argocd
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`argocd.devserver.ir`)
+      middlewares:
+        - name: redirect-https
+      services:
+        - kind: Service
+          name: argocd-server
+          namespace: argocd
+          passHostHeader: true
+          port: 443
+          scheme: https
+  tls:
+    secretName: devserver-ir
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: argocd1
+  namespace: argocd
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: Host(`argocd.devserver.ir`)
+      middlewares:
+        - name: redirect-https
+      services:
+        - kind: Service
+          name: argocd-server
+          namespace: argocd
+          passHostHeader: true
+          port: 443
+          scheme: https
+
+
+
+
+
+#apiVersion: traefik.containo.us/v1alpha1
+#kind: IngressRoute
+#metadata:
+#  name: argocd
+#  namespace: argocd
+#spec:
+#  entryPoints:
+#    - web
+#    - websecure
+#  routes:
+#    - kind: Rule
+#      match: Host(`argocd.devserver.ir`)
+##      permitInsecure: true
+#      services:
+#        - kind: Service
+#          name: argocd-server
+#          namespace: argocd
+##          port: 80
+#          port: 443
+##          scheme: http
+##          passHostHeader: true
+#  tls:
+#    secretName: devserver-ir
+
+#apiVersion: traefik.containo.us/v1alpha1
+#kind: IngressRoute
+#metadata:
+#  name: argocd
+#  namespace: argocd
+#spec:
+#  routes:
+#    - kind: Rule
+#      match: Host(`argocd.devserver.ir`)
+#      services:
+#        - kind: Service
+#          name: argocd-server
+#          namespace: argocd
+#          port: 80
+#  tls:                              # [11]
+#    secretName: devserver-ir         # [12]
+#    domains:                        # [17]
+#    - main: devserver.ir             # [18]
+#      sans:                         # [19]
+#      - argocd.devserver.ir
+#
+

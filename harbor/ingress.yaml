@@ -1,0 +1,33 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: harbor
+  namespace: harbor
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: Host(`harbor.testpad.ir`)
+      services:
+        - kind: Service
+          name: harbor-portal
+          namespace: harbor
+          port: 80
+          scheme: http
+    - kind: Rule
+      match: Host(`harbor.testpad.ir`) && (PathPrefix(`/api`) || PathPrefix(`/service`) || PathPrefix(`/v2`) || PathPrefix(`/chartrepo`) || PathPrefix(`/c`))
+      services:
+        - kind: Service
+          name: harbor-portal
+          namespace: harbor
+          port: 80
+          scheme: http
+    - kind: Rule
+      match: Host(`notary.testpad.ir`)
+      services:
+        - kind: Service
+          name: harbor-notary-server
+          namespace: harbor
+          port: 4443
+          scheme: http

@@ -22,7 +22,7 @@ external:
 ```
 kubectl create namespace harbor
 helm repo add harbor https://helm.goharbor.io
-helm install -n harbor harbor harbor/harbor --values=harbor.yaml
+helm install -n harbor harbor harbor/harbor --values=values.yaml
 ```
 
 To run harbor you must create 3 databases:
@@ -35,3 +35,4 @@ CREATE DATABASE registry;
 CREATE DATABASE notary_server;
 CREATE DATABASE notary_signer;
 ```
+

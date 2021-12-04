@@ -7,7 +7,7 @@ ports:
     nodePort: 32443
 logs:
   general:
-    level: INFO
+    level: ERROR
   access:
     # To enable access logs
     enabled: true
@@ -15,7 +15,15 @@ env:
   - name: TZ
     value: Asia/Tehran
 image:
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
 ingressRoute:
   dashboard:
     enabled: false # We will use a custom inrgessRoute with basic auth instead of the default one
+securityContext:
+  capabilities:
+    drop: [ALL]
+    add: [NET_BIND_SERVICE]
+  readOnlyRootFilesystem: true
+  runAsGroup: 0
+  runAsNonRoot: false
+  runAsUser: 0

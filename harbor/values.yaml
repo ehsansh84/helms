@@ -1,14 +1,14 @@
-externalURL: http://harbor.greenrnd.com
+externalURL: https://harbor.testpad.ir
 expose:
   ingress:
     hosts:
-      core: h.greenrnd.com
-      notary: notary.greenrnd.com
+      core: harbor.testpad.ir
+      notary: notary.testpad.ir
   tls:
-    enabled: true
-    certSource: secret
-    secret:
-      secretName: h.greenrnd.com
+    enabled: false
+#    certSource: secret
+#    secret:
+#      secretName: h.greenrnd.com-v787h
 
 
 harborAdminPassword: Harbor@123
@@ -18,7 +18,7 @@ database:
      host: "postgres-postgresql.postgres"
      port: "5432"
      username: "postgres"
-     password: "ilQ7lUqd2B"
+     password: "Z38EYIi3CP"
      coreDatabase: "registry"
      notaryServerDatabase: "notary_server"
      notarySignerDatabase: "notary_signer"
@@ -27,6 +27,7 @@ persistence:
   persistentVolumeClaim:
     registry:
      storageClass: "rook-ceph-block-2"
+     size: 100Gi
     chartmuseum:
      storageClass: "rook-ceph-block-2"
     jobservice:

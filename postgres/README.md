@@ -26,7 +26,7 @@ kubectl create namespace postgres
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm install -n postgres postgres bitnami/postgresql -f postgres.yaml
 ```
-You can aquire password this way:
+You can acquire password this way:
 ```
 export POSTGRES_PASSWORD=$(kubectl get secret -n postgres postgres-postgresql -o jsonpath="{.data.postgresql-password}" | base64 --decode)
 ```

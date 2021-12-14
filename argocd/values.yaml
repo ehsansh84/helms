@@ -1,0 +1,5 @@
+server:
+#  config:
+#    url: http://argocd.doomain.ir
+  ingress:
+      enabled: false

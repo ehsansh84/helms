@@ -12,7 +12,7 @@ external:
    host: "postgres-postgresql"
    port: "5432"
    username: "postgres"
-   password: "^Avnsdhj6534"
+   password: "ilQ7lUqd2B"
    coreDatabase: "registry"
    notaryServerDatabase: "notary_server"
    notarySignerDatabase: "notary_signer"

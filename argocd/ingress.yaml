@@ -1,3 +1,49 @@
+#apiVersion: traefik.containo.us/v1alpha1
+#kind: IngressRoute
+#metadata:
+#  name: argocd
+#  namespace: argocd
+#spec:
+#  entryPoints:
+#    - websecure
+#  routes:
+#    - kind: Rule
+#      match: Host(`argocd.devserver.ir`)
+#      middlewares:
+#        - name: redirect-https
+#      services:
+#        - kind: Service
+#          name: argocd-server
+#          namespace: argocd
+#          passHostHeader: true
+#          port: 443
+#          scheme: https
+#  tls:
+#    secretName: devserver-ir
+#---
+
+
+#apiVersion: traefik.containo.us/v1alpha1
+#kind: IngressRoute
+#metadata:
+#  name: argocd
+#  namespace: argocd
+#spec:
+#  entryPoints:
+#    - web
+#  routes:
+#    - kind: Rule
+#      match: Host(`argo.greenrnd.com`)
+##      middlewares:
+##        - name: redirect-https
+#      services:
+#        - kind: Service
+#          name: argocd-server
+#          namespace: argocd
+##          passHostHeader: true
+#          port: 80
+##          scheme: https
+
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
@@ -5,43 +51,16 @@ metadata:
   namespace: argocd
 spec:
   entryPoints:
-    - websecure
-  routes:
-    - kind: Rule
-      match: Host(`argocd.devserver.ir`)
-      middlewares:
-        - name: redirect-https
-      services:
-        - kind: Service
-          name: argocd-server
-          namespace: argocd
-          passHostHeader: true
-          port: 443
-          scheme: https
-  tls:
-    secretName: devserver-ir
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  name: argocd1
-  namespace: argocd
-spec:
-  entryPoints:
     - web
   routes:
     - kind: Rule
-      match: Host(`argocd.devserver.ir`)
-      middlewares:
-        - name: redirect-https
+      match: Host(`argocd.doomain.ir`)
       services:
         - kind: Service
           name: argocd-server
           namespace: argocd
-          passHostHeader: true
-          port: 443
-          scheme: https
-
+          port: 80
+          scheme: http
 
 
 

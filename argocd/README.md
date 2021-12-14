@@ -6,7 +6,7 @@ Original helm repository: https://github.com/argoproj/argo-helm/tree/master/char
 ```
 kubectl create namespace argocd
 helm repo add argo https://argoproj.github.io/argo-helm
-helm install -n argocd argocd argo/argo-cd
+helm install -n argocd argocd argo/argo-cd -f values.yaml
 ```
 
 ### If you want to use your own certificate produce `secret` like this:

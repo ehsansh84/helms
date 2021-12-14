@@ -8,7 +8,7 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: Host(`harbor.testpad.ir`)
+      match: Host(`harbor.doomain.ir`)
       services:
         - kind: Service
           name: harbor-portal
@@ -16,7 +16,7 @@ spec:
           port: 80
           scheme: http
     - kind: Rule
-      match: Host(`harbor.testpad.ir`) && (PathPrefix(`/api`) || PathPrefix(`/service`) || PathPrefix(`/v2`) || PathPrefix(`/chartrepo`) || PathPrefix(`/c`))
+      match: Host(`harbor.doomain.ir`) && (PathPrefix(`/api`) || PathPrefix(`/service`) || PathPrefix(`/v2`) || PathPrefix(`/chartrepo`) || PathPrefix(`/c`))
       services:
         - kind: Service
           name: harbor-portal
@@ -24,7 +24,7 @@ spec:
           port: 80
           scheme: http
     - kind: Rule
-      match: Host(`notary.testpad.ir`)
+      match: Host(`notary.doomain.ir`)
       services:
         - kind: Service
           name: harbor-notary-server

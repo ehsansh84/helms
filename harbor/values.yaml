@@ -1,9 +1,9 @@
-externalURL: https://harbor.testpad.ir
+externalURL: https://harbor.doomain.ir
 expose:
   ingress:
     hosts:
-      core: harbor.testpad.ir
-      notary: notary.testpad.ir
+      core: harbor.doomain.ir
+      notary: notary.doomain.ir
   tls:
     enabled: false
 #    certSource: secret
@@ -18,7 +18,7 @@ database:
      host: "postgres-postgresql.postgres"
      port: "5432"
      username: "postgres"
-     password: "Z38EYIi3CP"
+     password: "ilQ7lUqd2B"
      coreDatabase: "registry"
      notaryServerDatabase: "notary_server"
      notarySignerDatabase: "notary_signer"

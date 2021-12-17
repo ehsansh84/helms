@@ -13,3 +13,8 @@ helm install -n argocd argocd argo/argo-cd -f values.yaml
 ```
 kubectl create secret tls my-secret-name -n argocd --cert=path/to/cert/file --key=path/to/key/file
 ```
+
+### get admin password:
+```commandline
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+```

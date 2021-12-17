@@ -1,0 +1,25 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: harbor-cors
+  namespace: harbor
+spec:
+  headers:
+    accessControlAllowHeaders:
+      - "Content-Type"
+      - "Origin"
+      - "Authorization"
+    accessControlAllowMethods:
+      - "*"
+    accessControlAllowOriginList:
+      - "*"
+    accessControlMaxAge: 100
+    addVaryHeader: true
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: harbor-gzip
+  namespace: harbor
+spec:
+  compress: {}

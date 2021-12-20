@@ -5,29 +5,26 @@ metadata:
   namespace: harbor
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
-    - kind: Rule
-      match: Host(`harbor.doomain.ir`)
-      services:
-        - kind: Service
-          name: harbor-portal
-          namespace: harbor
-          port: 80
-          scheme: http
-    - kind: Rule
-      match: Host(`harbor.doomain.ir`) && (PathPrefix(`/api`) || PathPrefix(`/service`) || PathPrefix(`/v2`) || PathPrefix(`/chartrepo`) || PathPrefix(`/c`))
-      services:
-        - kind: Service
-          name: harbor-portal
-          namespace: harbor
-          port: 80
-          scheme: http
-    - kind: Rule
-      match: Host(`notary.doomain.ir`)
-      services:
-        - kind: Service
-          name: harbor-notary-server
-          namespace: harbor
-          port: 4443
-          scheme: http
+  - match: Host(`registry.greenrnd.com`)
+    kind: Rule
+    services:
+    - name: harbor-portal
+      namespace: harbor
+      port: 80
+  - match: Host(`registry.greenrnd.com`) && PathPrefix(`/api/`, `/service/`, `/v2/`, `/chartrepo/`, `/c/`)
+    kind: Rule
+    services:
+    - name: harbor-core
+      namespace: harbor
+      port: 80
+  - match: Host(`notary.greenrnd.com`)
+
+    kind: Rule
+    services:
+    - name: harbor-notary-server
+      namespace: harbor
+      port: 4443
+  tls:
+    secretName: greenrnd

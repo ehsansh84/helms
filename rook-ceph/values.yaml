@@ -1,0 +1,6 @@
+image:
+  repository: registry.greenrnd.com/cache/rook/ceph
+  tag: master
+tolerations:
+  - key: storage
+    operator: Exists

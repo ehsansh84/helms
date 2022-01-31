@@ -1,15 +1,16 @@
-externalURL: https://harbor.doomain.ir
+externalURL: https://registry.greenrnd.com
+imagePullPolicy: IfNotPresent
 expose:
   ingress:
     hosts:
-      core: harbor.doomain.ir
-      notary: notary.doomain.ir
+      core: registry.greenrnd.com
+      notary: notary.greenrnd.com
   tls:
-    enabled: false
-#    certSource: secret
-#    secret:
-#      secretName: h.greenrnd.com-v787h
-
+    enabled: true
+    certSource: secret
+    secret:
+      secretName: greenrnd
+      notarySecretName: greenrnd
 
 harborAdminPassword: Harbor@123
 database:
@@ -18,7 +19,7 @@ database:
      host: "postgres-postgresql.postgres"
      port: "5432"
      username: "postgres"
-     password: "ilQ7lUqd2B"
+     password: "vt8kMtIvCS"
      coreDatabase: "registry"
      notaryServerDatabase: "notary_server"
      notarySignerDatabase: "notary_signer"

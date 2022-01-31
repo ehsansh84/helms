@@ -1,0 +1,5 @@
+controller:
+  image:
+    registry: registry.greenrnd.com/docker/docker
+    repository: bitnami/cert-manager
+    tag: 1.7.0-debian-10-r0

@@ -9,12 +9,85 @@ spec:
   routes:
     - kind: Rule
       match: Host(`argo.greenrnd.com`)
+      priority: 10
       services:
         - name: argocd-server
           namespace: argocd
           port: 80
+    - kind: Rule
+      match: Host(`argo.greenrnd.com`) && Headers(`Content-Type`, `application/grpc`)
+      priority: 11
+      services:
+        - name: argocd-server
+          port: 80
+          scheme: h2c
   tls:
     secretName: greenrnd
+
+
+
+
+#apiVersion: traefik.containo.us/v1alpha1
+#kind: IngressRoute
+#metadata:
+#  annotations:
+#    kubectl.kubernetes.io/last-applied-configuration: >
+#      {"apiVersion":"traefik.containo.us/v1alpha1","kind":"IngressRoute","metadata":{"annotations":{},"creationTimestamp":"2021-12-26T10:31:48Z","generation":2,"managedFields":[{"apiVersion":"traefik.containo.us/v1alpha1","fieldsType":"FieldsV1","fieldsV1":{"f:spec":{".":{},"f:entryPoints":{},"f:tls":{".":{},"f:secretName":{}}}},"manager":"kubectl-create","operation":"Update","time":"2021-12-26T10:31:48Z"},{"apiVersion":"traefik.containo.us/v1alpha1","fieldsType":"FieldsV1","fieldsV1":{"f:metadata":{"f:annotations":{".":{},"f:kubectl.kubernetes.io/last-applied-configuration":{}}},"f:spec":{"f:routes":{}}},"manager":"kubectl-client-side-apply","operation":"Update","time":"2021-12-27T07:44:13Z"}],"name":"argocd","namespace":"argocd","selfLink":"/apis/traefik.containo.us/v1alpha1/namespaces/argocd/ingressroutes/argocd","uid":"d060fc02-7787-42b6-a934-8b1bfeed7155"},"spec":{"entryPoints":["websecure"],"routes":[{"kind":"Rule","match":"Host(`argo.greenrnd.com`)","priority":10,"services":[{"name":"argocd-server","namespace":"argocd","port":80}]},{"kind":"Rule","match":"Host(`argo.greenrnd.com`)
+#      \u0026\u0026 Headers(`Content-Type`,
+#      `application/grpc`)","priority":11,"services":[{"name":"argocd-server","port":80,"scheme":"h2c"}]}],"tls":{"secretName":"greenrnd"}}}
+#  creationTimestamp: '2021-12-26T10:31:48Z'
+#  generation: 3
+#  managedFields:
+#    - apiVersion: traefik.containo.us/v1alpha1
+#      fieldsType: FieldsV1
+#      fieldsV1:
+#        f:spec:
+#          .: {}
+#          f:entryPoints: {}
+#          f:tls:
+#            .: {}
+#            f:secretName: {}
+#      manager: kubectl-create
+#      operation: Update
+#      time: '2021-12-26T10:31:48Z'
+#    - apiVersion: traefik.containo.us/v1alpha1
+#      fieldsType: FieldsV1
+#      fieldsV1:
+#        f:metadata:
+#          f:annotations:
+#            .: {}
+#            f:kubectl.kubernetes.io/last-applied-configuration: {}
+#        f:spec:
+#          f:routes: {}
+#      manager: kubectl-client-side-apply
+#      operation: Update
+#      time: '2021-12-27T07:44:13Z'
+#  name: argocd
+#  namespace: argocd
+#  resourceVersion: '28487938'
+#  uid: d060fc02-7787-42b6-a934-8b1bfeed7155
+#  selfLink: /apis/traefik.containo.us/v1alpha1/namespaces/argocd/ingressroutes/argocd
+#spec:
+#  entryPoints:
+#    - websecure
+#  routes:
+#    - kind: Rule
+#      match: Host(`argo.greenrnd.com`)
+#      priority: 10
+#      services:
+#        - name: argocd-server
+#          namespace: argocd
+#          port: 80
+#    - kind: Rule
+#      match: Host(`argo.greenrnd.com`) && Headers(`Content-Type`, `application/grpc`)
+#      priority: 11
+#      services:
+#        - name: argocd-server
+#          port: 80
+#          scheme: h2c
+#  tls:
+#    secretName: greenrnd
+
 
 
 #---

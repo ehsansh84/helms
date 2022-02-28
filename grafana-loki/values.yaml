@@ -1,0 +1,17 @@
+grafana:
+  enabled: true
+prometheus:
+  kubeStateMetrics:
+    enabled: false
+  enabled: true
+  alertmanager:
+    persistentVolume:
+      enabled: false
+  server:
+    persistentVolume:
+      enabled: false
+loki:
+  persistence:
+    enabled: true
+    storageClassName: rook-ceph-block-2
+    size: 5Gi

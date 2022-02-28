@@ -1,0 +1,171 @@
+sentry:
+  dsn: ""
+image:
+  repository: registry.greenrnd.com/cache/getsentry/sentry-kubernetes
+  tag: latest
+user:
+  create: true
+  email: ehsan.shirzadi@gmail.com
+  password: Ehsan@123
+redis:
+  common:
+    global:
+      tolerations:
+      - key: database
+        operator: Exists
+      imageRegistry: registry.greenrnd.com/cache/bitnami/redis:6.2.5-debian-10-r34
+      storageClass: "openebs-lvmpv"
+  master:
+    tolerations:
+    - key: database
+      operator: Exists
+    persistence:
+      storageClass: "openebs-lvmpv"
+  replica:
+    persistence:
+      storageClass: "openebs-lvmpv"
+  global:
+    imageRegistry: registry.greenrnd.com/cache/bitnami/redis:6.2.5-debian-10-r34
+    storageClass: "openebs-lvmpv"
+  metrics:
+    tolerations:
+    - key: database
+      operator: Exists
+    image:
+      pullPolicy: IfNotPresent
+      registry: registry.greenrnd.com
+      repository: cache/bitnami/redis-exporter
+      tag: 1.26.0-debian-10-r5
+  sentinel:
+    tolerations:
+    - key: database
+      operator: Exists
+    image:
+      pullPolicy: IfNotPresent
+      registry: registry.greenrnd.com
+      repository: cache/bitnami/redis-sentinel
+      tag: 6.2.5-debian-10-r34
+  sysctl:
+    tolerations:
+    - key: database
+      operator: Exists
+    image:
+      pullPolicy: Always
+      registry: registry.greenrnd.com
+      repository: cache/bitnami/bitnami-shell
+      tag: 10-debian-10-r174
+clickhouse:
+  clickhouse:
+    image: registry.greenrnd.com/cache/yandex/clickhouse-server
+    imagePullPolicy: IfNotPresent
+    imageVersion: 20.8.9.6
+
+rabbitmq:
+  image:
+    debug: false
+    pullPolicy: IfNotPresent
+    registry: registry.greenrnd.com
+    repository: cache/bitnami/rabbitmq
+    tag: 3.8.11-debian-10-r0
+  nodeAffinityPreset:
+    key: ""
+    type: ""
+    values: []
+  tolerations:
+    - key: database
+      operator: Exists
+  volumePermissions:
+    image:
+      pullPolicy: Always
+      registry: registry.greenrnd.com
+      repository: cache/bitnami/minideb
+      tag: buster
+postgresql:
+  image:
+    pullPolicy: IfNotPresent
+    registry: registry.greenrnd.com
+    repository: cache/bitnami/postgresql
+    tag: 11.10.0-debian-10-r60
+  metrics:
+    image:
+      pullPolicy: IfNotPresent
+      registry: registry.greenrnd.com
+      repository: cache/bitnami/postgres-exporter
+      tag: 0.8.0-debian-10-r328
+  primary:
+    nodeAffinityPreset:
+      key: ""
+      type: ""
+      values: []
+    tolerations: []
+  volumePermissions:
+    enabled: false
+    image:
+      pullPolicy: Always
+      registry: registry.greenrnd.com
+      repository: cache/bitnami/minideb
+      tag: buster
+    securityContext:
+      runAsUser: 0
+
+kafka:
+  tolerations:
+  - key: database
+    operator: Exists
+  image:
+    debug: false
+    pullPolicy: IfNotPresent
+    pullSecrets: []
+    registry: registry.greenrnd.com
+    repository: cache/bitnami/kafka
+    tag: 2.6.0-debian-10-r78
+  metrics:
+    tolerations:
+    - key: database
+      operator: Exists
+    kafka:
+      tolerations:
+      - key: database
+        operator: Exists
+      image:
+        pullPolicy: IfNotPresent
+        pullSecrets: []
+        registry: registry.greenrnd.com
+        repository: cache/bitnami/kafka-exporter
+        tag: 1.2.0-debian-10-r277
+  volumePermissions:
+    enabled: false
+    image:
+      pullPolicy: Always
+      pullSecrets: []
+      registry: registry.greenrnd.com
+      repository: cache/bitnami/minideb
+      tag: buster
+  zookeeper:
+    tolerations:
+    - key: database
+      operator: Exists
+    image:
+      debug: false
+      pullPolicy: IfNotPresent
+      registry: registry.greenrnd.com
+      repository: cache/bitnami/zookeeper
+      tag: 3.6.2-debian-10-r58
+    volumePermissions:
+      enabled: false
+      image:
+        pullPolicy: Always
+        registry: registry.greenrnd.com
+        repository: cache/bitnami/minideb
+        tag: buster
+nginx:
+  tolerations:
+    - key: database
+      operator: Exists
+  enabled: true
+  image:
+    debug: false
+    pullPolicy: IfNotPresent
+    registry: registry.greenrnd.com
+    repository: cache/bitnami/nginx
+    tag: 1.21.0-debian-10-r21

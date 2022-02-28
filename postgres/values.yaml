@@ -12,5 +12,4 @@ readReplicas:
   tolerations:
     - key: database
       operator: Exists
-
 initdbScriptsConfigMap: postrges-initdb-config

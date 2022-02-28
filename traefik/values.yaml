@@ -16,6 +16,8 @@ env:
     value: Asia/Tehran
 image:
   pullPolicy: IfNotPresent
+  name: registry.greenrnd.com/docker/docker/library/traefik
+  tag: "2.5.4"
 ingressRoute:
   dashboard:
     enabled: false # We will use a custom inrgessRoute with basic auth instead of the default one

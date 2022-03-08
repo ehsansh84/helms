@@ -34,3 +34,33 @@ Exec into database like this:
 ```commandline
 kubectl run postgres-postgresql-client --rm --tty -i --restart='Never' -n postgres --image docker.io/bitnami/postgresql:11.14.0-debian-10-r0 --env="PGPASSWORD=$POSTGRES_PASSWORD" --command -- psql --host postgres-postgresql -U postgres -d postgres -p 5432
 ```
+You can easily manage Postgres through a webgui:
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: pgweb
+  name: pgweb
+spec:
+  containers:
+    - image: sosedoff/pgweb
+      name: pgweb
+      ports:
+        - containerPort: 8081
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: pgweb
+  name: pgweb-svc
+spec:
+  ports:
+    - port: 8081
+      targetPort: 8081
+      protocol: TCP
+  type: NodePort
+  selector:
+    run: pgweb
+```

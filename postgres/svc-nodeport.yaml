@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-postgresql-nodeport
+  namespace: postgres
+  labels:
+    app.kubernetes.io/instance: postgres
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: postgresql
+    helm.sh/chart: postgresql-10.13.14
+spec:
+  type: NodePort
+  ports:
+    - port: 5432
+      protocol: TCP
+      nodePort: 30036
+      name: tcp-postgresql
+  selector:
+    app.kubernetes.io/instance: postgres
+    app.kubernetes.io/name: postgresql
+    role: primary

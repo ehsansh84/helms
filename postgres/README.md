@@ -24,7 +24,7 @@ $ kubectl taint no worker6-db db:NoSchedule
 ```
 kubectl create namespace postgres
 helm repo add bitnami https://charts.bitnami.com/bitnami
-helm install -n postgres postgres bitnami/postgresql -f postgres.yaml
+helm install -n postgres postgres bitnami/postgresql -f values.yaml
 ```
 You can acquire password this way:
 ```

@@ -6,10 +6,20 @@ primary:
     - key: database
       operator: Exists
 persistence:
-  storageClass: "openebs-lvmpv"
+  storageClass: "rook-cephfs"
+#  storageClass: "openebs-lvmpv"
 
 readReplicas:
   tolerations:
     - key: database
       operator: Exists
 initdbScriptsConfigMap: postrges-initdb-config
+global:
+  postgresql:
+    auth:
+      postgresPassword: "Postgres@123"
+image:
+  registry: registry.greenrnd.com/docker/docker
+  repository: bitnami/postgresql
+  tag: 14.2.0-debian-10-r22
+

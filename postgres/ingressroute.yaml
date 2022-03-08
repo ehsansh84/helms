@@ -1,0 +1,39 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: pghttps
+  namespace: postgres
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`pg.devserver.ir`)
+    kind: Rule
+    services:
+      - name: postgres-postgresql
+        namespace: postgres
+        port: 5432
+  tls:
+    secretName: swapp-tls
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: pghttp
+  namespace: postgres
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`pg.devserver.ir`)
+#    middlewares:
+#      - name: redirect-https
+    kind: Rule
+    services:
+      - name: postgres-postgresql
+        namespace: postgres
+        port: 5432
+
+
+
+

@@ -7,14 +7,14 @@ replication:
   enabled: true
   readReplicas: 3
 ```
-### Make it tolerate out taint:
+### Make it tolerate our taint:
 ```yaml
 primary:
   tolerations:
     - key: db
     operator: Exists
 ```
-In this case out taints created like this:
+In this case our taints created like this:
 ```yaml
 $ kubectl taint no worker4-db db:NoSchedule
 $ kubectl taint no worker5-db db:NoSchedule

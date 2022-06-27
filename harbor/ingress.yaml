@@ -7,24 +7,56 @@ spec:
   entryPoints:
     - websecure
   routes:
-  - match: Host(`registry.greenrnd.com`)
+  - match: Host(`tregistry.greenrnd.com`)
     kind: Rule
     services:
     - name: harbor-portal
       namespace: harbor
       port: 80
-  - match: Host(`registry.greenrnd.com`) && PathPrefix(`/api/`, `/service/`, `/v2/`, `/chartrepo/`, `/c/`)
+  - match: Host(`tregistry.greenrnd.com`) && PathPrefix(`/api/`, `/service/`, `/v2/`, `/chartrepo/`, `/c/`)
     kind: Rule
     services:
     - name: harbor-core
       namespace: harbor
       port: 80
-  - match: Host(`notary.greenrnd.com`)
-
-    kind: Rule
-    services:
-    - name: harbor-notary-server
-      namespace: harbor
-      port: 4443
+#  - match: Host(`notary.greenrnd.com`)
+#    kind: Rule
+#    services:
+#    - name: harbor-notary-server
+#      namespace: harbor
+#      port: 4443
+#  tls:
+#    secretName: greenrnd
+---
+spec:
+  routes:
+    - kind: Rule
+      match: Host(`registry.greenrnd.com`)
+#      middlewares:
+#        - name: buffer
+#          namespace: harbor
+      services:
+        - name: harbor-portal
+          namespace: harbor
+          port: 80
+    - kind: Rule
+      match: >-
+        Host(`registry.greenrnd.com`) && PathPrefix(`/api/`, `/service/`, `/v2/`, `/chartrepo/`, `/c/`)
+#      middlewares:
+#        - name: buffer
+#          namespace: harbor
+      services:
+        - name: harbor-core
+          namespace: harbor
+          port: 80
+#    - kind: Rule
+#      match: Host(`notary.greenrnd.com`)
+#      middlewares:
+#        - name: buffer
+#          namespace: harbor
+#      services:
+#        - name: harbor-notary-server
+#          namespace: harbor
+#          port: 4443
   tls:
     secretName: greenrnd

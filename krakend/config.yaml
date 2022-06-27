@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: krakend-cm
+  labels:
+    name: krakend-cm
+data:
+  krakend.json: |
+    {
+      "version": 2,
+      "endpoints": [],
+      "extra_config": {}
+    }

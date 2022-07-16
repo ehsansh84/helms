@@ -1,5 +1,4 @@
-# Install kong
-reference: https://github.com/Kong/charts
+# Install gatekeeper
 
 ### Run:
 ```commandline

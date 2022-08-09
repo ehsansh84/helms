@@ -16,7 +16,8 @@ env:
     value: Asia/Tehran
 image:
   pullPolicy: IfNotPresent
-  name: registry.greenrnd.com/docker/docker/library/traefik
+#  name: registry.greenrnd.com/docker/docker/library/traefik
+  name: traefik
   tag: "2.5.4"
 ingressRoute:
   dashboard:
@@ -29,3 +30,15 @@ securityContext:
   runAsGroup: 0
   runAsNonRoot: false
   runAsUser: 0
+deployment:
+  enabled: true
+  kind: DaemonSet
+#  kind: Deployment
+#  replicas: 1
+resources:
+   requests:
+     cpu: "200m"
+     memory: "64Mi"
+   limits:
+     cpu: "1000m"
+     memory: "2Gi"

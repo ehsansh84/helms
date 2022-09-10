@@ -1,3 +1,4 @@
+hostNetwork: true
 service:
   type: NodePort
 ports:
@@ -31,10 +32,10 @@ securityContext:
   runAsNonRoot: false
   runAsUser: 0
 deployment:
-  enabled: true
-  kind: DaemonSet
-#  kind: Deployment
-#  replicas: 1
+#  enabled: true
+#  kind: DaemonSet
+  kind: Deployment
+  replicas: 1
 resources:
    requests:
      cpu: "200m"

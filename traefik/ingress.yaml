@@ -8,7 +8,7 @@ spec:
     - web
     - websecure
   routes:
-    - match: Host(`traefik.greenrnd.com`) # Hostname to match
+    - match: Host(`traefik.testpad.ir`) # Hostname to match
       kind: Rule
       services: # Service to redirect requests to
         - name: api@internal # Special service created by Traefik pod
@@ -16,4 +16,4 @@ spec:
       middlewares:
         - name: auth
   tls:
-    secretName: traefik.greenrnd.com
+    secretName: traefik.testpad.ir

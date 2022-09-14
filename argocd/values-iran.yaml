@@ -1,0 +1,22 @@
+server:
+  ingress:
+      enabled: false
+  extraArgs:
+    - --insecure
+global:
+  image:
+    repository: registry.greenwebplus.com/public/argocd
+    tag: "v2.4.11"
+redis:
+  enabled: true
+  name: redis
+  image:
+    repository: registry.greenwebplus.com/public/redis
+    tag: 7.0.4-alpine
+    imagePullPolicy: IfNotPresent
+dex:
+  enabled: true
+  name: dex-server
+  image:
+    repository: registry.greenwebplus.com/public/dex
+    tag: v2.30.2

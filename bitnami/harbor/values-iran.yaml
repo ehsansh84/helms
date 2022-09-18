@@ -1,0 +1,69 @@
+externalURL: https://registry.greenwebplus.com
+imagePullPolicy: IfNotPresent
+expose:
+  ingress:
+    hosts:
+      core: registry.greenwebplus.com
+      notary: notary.greenwebplus.com
+  tls:
+    enabled: true
+    certSource: secret
+    secret:
+      secretName: greenwebplus
+      notarySecretName: greenwebplus
+
+harborAdminPassword: Harbor@123
+
+postgresql:
+  enabled: true
+  ## Override PostgreSQL default image as 14.x is not supported https://goharbor.io/docs/2.4.0/install-config/
+  ## ref: https://github.com/bitnami/containers/tree/main/bitnami/postgresql
+  ## @param postgresql.image.registry PostgreSQL image registry
+  ## @param postgresql.image.repository PostgreSQL image repository
+  ## @param postgresql.image.tag PostgreSQL image tag (immutable tags are recommended)
+  ## @param postgresql.image.digest PostgreSQL image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag
+  ##
+  image:
+    registry: docker.io
+    repository: bitnami/postgresql
+    tag: 13.8.0-debian-11-r10
+    digest: ""
+  auth:
+    enablePostgresUser: true
+    postgresPassword: not-secure-database-password
+    existingSecret: ""
+  architecture: standalone
+  primary:
+    extendedConfiguration: |
+      max_connections = 1024
+    initdb:
+      scripts:
+        initial-notaryserver.sql: |
+          CREATE DATABASE notaryserver;
+          CREATE USER server;
+          alter user server with encrypted password 'password';
+          GRANT ALL PRIVILEGES ON DATABASE notaryserver TO server;
+        initial-notarysigner.sql: |
+          CREATE DATABASE notarysigner;
+          CREATE USER signer;
+          alter user signer with encrypted password 'password';
+          GRANT ALL PRIVILEGES ON DATABASE notarysigner TO signer;
+        initial-registry.sql: |
+          CREATE DATABASE registry ENCODING 'UTF8';
+          \c registry;
+          CREATE TABLE schema_migrations(version bigint not null primary key, dirty boolean not null);
+          
+
+persistence:
+  persistentVolumeClaim:
+    registry:
+     storageClass: "cephfs"
+     size: 300Gi
+    chartmuseum:
+     storageClass: "cephfs"
+    jobservice:
+     storageClass: "cephfs"
+    redis:
+     storageClass: "cephfs"
+    trivy:
+     storageClass: "cephfs"

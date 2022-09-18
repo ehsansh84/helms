@@ -52,8 +52,35 @@ postgresql:
           CREATE DATABASE registry ENCODING 'UTF8';
           \c registry;
           CREATE TABLE schema_migrations(version bigint not null primary key, dirty boolean not null);
-          
 
+registry:
+  controller:
+    image:
+      registry: registry.greenwebplus.com/docker/docker
+      repository: bitnami/harbor-registryctl
+      tag: 2.6.0-debian-11-r7
+nginx:
+  image:
+    registry: registry.greenwebplus.com/docker/docker
+    repository: bitnami/nginx
+    tag: 1.23.1-debian-11-r16
+jobservice:
+  image:
+    registry: registry.greenwebplus.com/docker/docker
+    repository: bitnami/harbor-jobservice
+    tag: 2.6.0-debian-11-r4
+notary:
+  enabled: true
+  server:
+    image:
+      registry: registry.greenwebplus.com/docker/docker
+      repository: bitnami/harbor-notary-server
+      tag: 2.6.0-debian-11-r6
+  signer:
+    image:
+      registry: registry.greenwebplus.com/docker/docker
+      repository: bitnami/harbor-notary-signer
+      tag: 2.6.0-debian-11-r6
 persistence:
   persistentVolumeClaim:
     registry:

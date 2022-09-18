@@ -81,6 +81,17 @@ notary:
       registry: registry.greenwebplus.com/docker/docker
       repository: bitnami/harbor-notary-signer
       tag: 2.6.0-debian-11-r6
+core:
+  image:
+    registry: registry.greenwebplus.com/docker/docker
+    repository: bitnami/harbor-core
+    tag: 2.6.0-debian-11-r8
+trivy:
+  image:
+    registry: registry.greenwebplus.com/docker/docker
+    repository: bitnami/harbor-adapter-trivy
+    tag: 2.6.0-debian-11-r6
+
 persistence:
   persistentVolumeClaim:
     registry:

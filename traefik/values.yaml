@@ -17,8 +17,8 @@ env:
     value: Asia/Tehran
 image:
   pullPolicy: IfNotPresent
-#  name: registry.greenrnd.com/docker/docker/library/traefik
-  name: traefik
+  name: registry.greenrnd.com/docker/docker/library/traefik
+#  name: traefik
   tag: "2.5.4"
 ingressRoute:
   dashboard:

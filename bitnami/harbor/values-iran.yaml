@@ -91,6 +91,16 @@ trivy:
     registry: registry.greenwebplus.com/docker/docker
     repository: bitnami/harbor-adapter-trivy
     tag: 2.6.0-debian-11-r6
+chartmuseum:
+  image:
+    registry: registry.greenwebplus.com/docker/docker
+    repository: bitnami/chartmuseum
+    tag: 0.15.0-debian-11-r19
+exporter:
+  image:
+    registry: registry.greenwebplus.com/docker/docker
+    repository: bitnami/harbor-exporter
+    tag: 2.6.0-debian-11-r8
 
 persistence:
   persistentVolumeClaim:

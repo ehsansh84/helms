@@ -3,3 +3,20 @@ controller:
     registry: registry.greenwebplus.com/docker/docker
     repository: bitnami/cert-manager
     tag: 1.9.1-debian-11-r15
+
+    image:
+      registry: registry.greenwebplus.com/docker/docker
+      repository: bitnami/acmesolver
+      tag: 1.9.1-debian-11-r16
+webhook:
+  replicaCount: 1
+  image:
+    registry: registry.greenwebplus.com/docker/docker
+    repository: bitnami/cert-manager-webhook
+    tag: 1.9.1-debian-11-r13
+cainjector:
+  replicaCount: 1
+  image:
+    registry: registry.greenwebplus.com/docker/docker
+    repository: bitnami/cainjector
+    tag: 1.9.1-debian-11-r14

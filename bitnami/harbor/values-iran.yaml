@@ -113,3 +113,9 @@ persistence:
      storageClass: "cephfs"
     trivy:
      storageClass: "cephfs"
+
+redis:
+  image:
+    registry: registry.greenwebplus.com/docker/docker
+    repository: bitnami/redis
+    tag: 7.0.4-debian-11-r17

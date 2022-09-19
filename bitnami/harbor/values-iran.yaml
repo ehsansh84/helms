@@ -119,3 +119,24 @@ redis:
     registry: registry.greenwebplus.com/docker/docker
     repository: bitnami/redis
     tag: 7.0.4-debian-11-r17
+portal:
+  ## Bitnami Harbor Portal image
+  ## ref: https://hub.docker.com/r/bitnami/harbor-portal/tags/
+  ## @param portal.image.registry Harbor Portal image registry
+  ## @param portal.image.repository Harbor Portal image repository
+  ## @param portal.image.tag Harbor Portal image tag (immutable tags are recommended)
+  ## @param portal.image.digest Harbor Portal image digest in the way sha256:aa.... Please note this parameter, if set, will override the tag
+  ## @param portal.image.pullPolicy Harbor Portal image pull policy
+  ## @param portal.image.pullSecrets Harbor Portal image pull secrets
+  ## @param portal.image.debug Enable Harbor Portal image debug mode
+  ##
+  image:
+    registry: registry.greenwebplus.com/docker/docker
+    repository: bitnami/harbor-portal
+    tag: 2.6.0-debian-11-r0
+
+#postgresql:
+#  image:
+#    registry: registry.greenwebplus.com/docker/docker
+#    repository: bitnami/postgresql
+#    tag: 14.5.0-debian-11-r6

@@ -1,5 +1,23 @@
 controller:
   image:
-    registry: registry.greenrnd.com/docker/docker
+    registry: registry.greenwebplus.com/docker/docker
     repository: bitnami/cert-manager
-    tag: 1.7.0-debian-10-r0
+    tag: 1.9.1-debian-11-r26
+  acmesolver:
+    image:
+      registry: registry.greenwebplus.com/docker/docker
+      repository: bitnami/acmesolver
+      tag: 1.9.1-debian-11-r28
+webhook:
+  replicaCount: 1
+  image:
+    registry: registry.greenwebplus.com/docker/docker
+    repository: bitnami/cert-manager-webhook
+    tag: 1.9.1-debian-11-r24
+cainjector:
+  image:
+    registry: registry.greenwebplus.com/docker/docker
+    repository: bitnami/cainjector
+    tag: 1.9.1-debian-11-r26
+
+installCRDs: true

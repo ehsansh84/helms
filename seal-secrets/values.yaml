@@ -1,0 +1,4 @@
+image:
+  registry: registry.greenwebplus.com/docker/docker
+  repository: bitnami/sealed-secrets-controller
+  tag: v0.19.1
